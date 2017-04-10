@@ -13,7 +13,8 @@ export class QuestionPage {
 
     user = Global.Usuario.user;
     Question = this.RandomQuestion();
-    button;
+    Respuestas={correctas:0,incorrectas:0};
+    buttonDisabled=false;
 
     RandomQuestion()
     {
@@ -26,24 +27,33 @@ export class QuestionPage {
       {
           console.log("respuesta correcta");
           document.getElementsByName(opcion).item(0).style.backgroundColor = "green";        
+          this.Respuestas.correctas++;
       }
       else
       {
           console.log("respuesta incorrecta");
           document.getElementsByName(opcion).item(0).style.backgroundColor = "red";
           document.getElementsByName(this.Question.respuesta).item(0).style.backgroundColor = "green";
+          this.Respuestas.incorrectas++;
       }
-
-          document.getElementsByName("siguiente").item(0).style.visibility="true";
+          this.ActivarDesactivarBotones();
+        !this.buttonDisabled;
     }
 
      LimpiarBotones()
     {
+        document.getElementById("ionSiguiente").hidden=!this.buttonDisabled;
          document.getElementsByName('opcion1').item(0).style.backgroundColor = "#008ae6";
          document.getElementsByName('opcion2').item(0).style.backgroundColor = "#008ae6";
          document.getElementsByName('opcion3').item(0).style.backgroundColor = "#008ae6";
          document.getElementsByName('opcion4').item(0).style.backgroundColor = "#008ae6";
+         this.ActivarDesactivarBotones();
          this.Question = this.RandomQuestion();
     }
 
+    ActivarDesactivarBotones()
+    {
+        this.buttonDisabled = (!this.buttonDisabled)
+        document.getElementById("ionSiguiente").hidden=!this.buttonDisabled;
+    }
 }

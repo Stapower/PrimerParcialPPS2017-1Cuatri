@@ -24,34 +24,45 @@
         </div>
 
         <div padding>
-          <button ion-button block name="opcion1" (click)="Answer(Question.opcion1,'opcion1')"> {{Question.opcion1}} </button>
+          <button ion-button block name="opcion1" [disabled]="buttonDisabled" (click)="Answer(Question.opcion1,'opcion1')"> {{Question.opcion1}} </button>
         </div>
 
         <div padding>
-          <button ion-button block name="opcion2" (click)="Answer(Question.opcion2,'opcion2')"> {{Question.opcion2}}</button>       
+          <button ion-button block name="opcion2" [disabled]="buttonDisabled" (click)="Answer(Question.opcion2,'opcion2')"> {{Question.opcion2}}</button>       
         </div>        
         
         <div padding>
-         <button ion-button block name="opcion3" (click)="Answer(Question.opcion3,'opcion3')"> {{Question.opcion3}} </button>       
+         <button ion-button block name="opcion3" [disabled]="buttonDisabled" (click)="Answer(Question.opcion3,'opcion3')"> {{Question.opcion3}} </button>       
         </div>
 
         <div padding>
-          <button ion-button block name="opcion4" (click)="Answer(Question.opcion4, 'opcion4')"> {{Question.opcion4}}</button>       
+          <button ion-button block name="opcion4" [disabled]="buttonDisabled" (click)="Answer(Question.opcion4, 'opcion4')"> {{Question.opcion4}}</button>       
         </div>
       </ion-list>
 
     </ion-card-content>
   </ion-card>
 
-<ion-card center>
+<ion-card center  id="ionSiguiente" hidden= true>
    <ion-card-content>
-      <ion-list>
+      <ion-list  >
         <div padding>
-          <button ion-button block name="siguiente" visibility = false (click)="LimpiarBotones()"> Siguiente pregunta </button>       
+          <button ion-button block name="siguiente" (click)="LimpiarBotones()"> Siguiente pregunta </button>       
         </div>
       </ion-list>
    </ion-card-content>
 </ion-card>
 
+<ion-card center>
+   <ion-card-content>
+      <ion-list>
+        <div padding>
+            <label> Correctas: {{Respuestas.correctas}} </label>
+            <br>
+            <label> Incorrectas: {{Respuestas.incorrectas}} </label>
+        </div>
+      </ion-list>
+   </ion-card-content>
+</ion-card>
 
 </ion-content>
